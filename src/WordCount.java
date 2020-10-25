@@ -101,6 +101,9 @@ public class WordCount {
   }
 
   public static void main(String[] args) throws Exception {
+	System.out.print("Current execution time (ms) = "); //Display execution time
+    System.out.println(System.currentTimeMillis());
+    
     Configuration conf = new Configuration();
     GenericOptionsParser optionParser = new GenericOptionsParser(conf, args);
     String[] remainingArgs = optionParser.getRemainingArgs();
@@ -109,7 +112,7 @@ public class WordCount {
       System.exit(2);
     }
     Job job = Job.getInstance(conf, "word count");
-    job.setJarByClass(WordCount2.class);
+    job.setJarByClass(WordCount.class);
     job.setMapperClass(TokenizerMapper.class);
     job.setCombinerClass(IntSumReducer.class);
     job.setReducerClass(IntSumReducer.class);
